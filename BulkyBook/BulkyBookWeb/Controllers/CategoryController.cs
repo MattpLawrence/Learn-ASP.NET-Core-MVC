@@ -29,6 +29,11 @@ namespace BulkyBookWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
+            //add custom validations (must be used with validation summary in view)
+            if(obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("Name", "The Display Order cannot exactly match the Name.");
+            }
             if (ModelState.IsValid) //make sure that the inputs match the requirements of the model
             {
                 _db.Categories.Add(obj); //add to database "post"
