@@ -24,6 +24,20 @@ namespace BulkyBookWeb.Controllers
             
             return View();
         }
+        //Post
+        [HttpPost] //hook to make this a post route
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Category obj)
+        {
+            if (ModelState.IsValid) //make sure that the inputs match the requirements of the model
+            {
+                _db.Categories.Add(obj); //add to database "post"
+                _db.SaveChanges();//push changes to database
+                return RedirectToAction("Index"); //redirect to "Index" page. use ("view":"controller") for dif controller
+            }
+            return View(obj);
+
+        }
 
     }
 }
