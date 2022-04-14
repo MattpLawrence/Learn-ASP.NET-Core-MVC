@@ -3,12 +3,16 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+
 //add connection string to sql server. need to use NuGet to download Microsoft.EntityFrameworkCore
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection") //connect to DefaultConnection in appsettings.json
     ));
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
