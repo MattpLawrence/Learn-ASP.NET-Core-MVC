@@ -7,7 +7,8 @@ namespace BulkyBookWeb.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required] // add custom validation message ex: [Required(ErrorMessage ="Get it right!")]
+
         public string Name { get; set; }
         [DisplayName("Display Order")] //set custom display name
         [Range(1,100,ErrorMessage = "Display order must between 1 and 100.")]//set custom input range and validation message
