@@ -1,12 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BulkyBookWeb.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BulkyBookWeb.Data
 {
-    public class ApplicationDBContext :DbContext
+    public class ApplicationDbContext :DbContext
     {
-        public ApplicationDBContext()
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
         }
+        //Create a category table with the name "Categories"
+        public DbSet<Category> Categories { get; set; }
     }
 }
